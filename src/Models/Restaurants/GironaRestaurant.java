@@ -13,23 +13,13 @@ import java.util.Map;
 
 public class GironaRestaurant extends Restaurant {
     public GironaRestaurant() {
-        super(Location.TARRAGONA);
-        ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
-        ingredients.add(Ingredient.ARTICHOKE);
-        this.localRecipes.put("Girona", new Pizza("Girona", ingredients));
-    }
-    @Override
-    public List<Product> getAvailableProducts() {
-        Map<String, Product> all = new HashMap<>(COMMON_RECIPES);
-        all.putAll(localRecipes);
-        all.put("Water", Beverage.WATER);
-        all.put("Beer", Beverage.BEER);
-        all.put("Soda", Beverage.COLA);
-        return new ArrayList<>(all.values());
+        super(Location.GIRONA);
     }
 
     @Override
-    public Pizza createPizza(String name) {
-        return null;
+    public void initializeLocalRecipes() {
+        ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
+        ingredients.add(Ingredient.ARTICHOKE);
+        this.localRecipes.put("Girona", new Pizza("Girona", ingredients));
     }
 }

@@ -5,6 +5,15 @@ public class Customer {
     private String phone;
     private String address;
     private boolean first;
+    private boolean adult;
+
+    public boolean isAdult() {
+        return adult;
+    }
+
+    public void setAdult(boolean adult) {
+        this.adult = adult;
+    }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }

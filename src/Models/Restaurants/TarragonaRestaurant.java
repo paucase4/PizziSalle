@@ -15,21 +15,11 @@ import java.util.Map;
 public class TarragonaRestaurant extends Restaurant {
     public TarragonaRestaurant() {
         super(Location.TARRAGONA);
+         }
+    @Override
+    public void initializeLocalRecipes() {
         ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
         ingredients.add(Ingredient.ARTICHOKE);
-        this.localRecipes.put("tarragona", new Pizza("tarragona", ingredients));
-    }
-    @Override
-    public List<Product> getAvailableProducts() {
-        Map<String, Product> all = new HashMap<>(COMMON_RECIPES);
-        all.putAll(localRecipes);
-        all.put("Water", Beverage.WATER);
-        all.put("Beer", Beverage.BEER);
-        all.put("Soda", Beverage.COLA);
-        return new ArrayList<>(all.values());
-    }
-    @Override
-    public Pizza createPizza(String name) {
-        return null;
+        this.localRecipes.put("tarragona", new Pizza("Tarragona", ingredients));
     }
 }

@@ -1,6 +1,7 @@
-package Models;
+package Models.Decorator;
 
 import Enums.Ingredient;
+import Models.Product;
 
 import java.util.ArrayList;
 import java.util.Collections;

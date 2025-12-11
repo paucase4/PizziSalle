@@ -1,5 +1,6 @@
 package Models.Restaurants;
 
+import Enums.Beverage;
 import Enums.Location;
 import Models.Pizza;
 import Models.Product;
@@ -16,14 +17,19 @@ public abstract class Restaurant {
 
     protected Map<String, Pizza> localRecipes = new HashMap<>();
     Location loc;
-    // ArrayList<Product> products = new ArrayList<>();
 
+    protected abstract void initializeLocalRecipes();
     public Restaurant(Location loc){
         this.loc = loc;
-        switch (loc) {
-            // case GIRONA -> ;
-        }
     }
-    public abstract List<Product> getAvailableProducts();
-    public abstract Pizza createPizza (String name);
+    public List<Product> getAvailableProducts() {
+        Map<String, Product> all = new HashMap<>(COMMON_RECIPES);
+        all.putAll(localRecipes);
+        all.put("Water", Beverage.WATER);
+        all.put("Beer", Beverage.BEER);
+        all.put("Soda", Beverage.COLA);
+        return new ArrayList<>(all.values());
+    }
+
+  //  public abstract Pizza createPizza (String name);
 }

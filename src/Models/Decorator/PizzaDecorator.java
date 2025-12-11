@@ -1,10 +1,7 @@
-package Models;
+package Models.Decorator;
 
-import Enums.Ingredient;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import Models.Pizza;
+import Models.Product;
 
 public abstract class PizzaDecorator implements Product {
     protected Product wrappedProduct;

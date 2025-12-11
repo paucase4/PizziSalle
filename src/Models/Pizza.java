@@ -5,7 +5,6 @@ import Enums.Ingredient;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Models.PizzaIngredients.getIngredients;
 
 public class Pizza implements Product {
     ArrayList<Ingredient> ingredients = new ArrayList<>();

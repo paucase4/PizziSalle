@@ -4,7 +4,6 @@ import Enums.Beverage;
 import Enums.Ingredient;
 import Enums.Location;
 import Models.Pizza;
-import Models.PizzaIngredients;
 import Models.Product;
 
 import java.util.ArrayList;
@@ -16,20 +15,15 @@ public class BarcelonaRestaurant extends Restaurant {
 
     public BarcelonaRestaurant() {
         super(Location.BARCELONA);
+    }
+
+    @Override
+    public void initializeLocalRecipes() {
         ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
         ingredients.add(Ingredient.BRIE);
-        this.localRecipes.put("barcelona", new Pizza("barcelona", ingredients));
+        this.localRecipes.put("barcelona", new Pizza("Barcelona", ingredients));
     }
-    @Override
-    public List<Product> getAvailableProducts() {
-        Map<String, Product> all = new HashMap<>(COMMON_RECIPES);
-        all.putAll(localRecipes);
-        all.put("Water", Beverage.WATER);
-        all.put("Beer", Beverage.BEER);
-        all.put("Soda", Beverage.COLA);
-        return new ArrayList<>(all.values());
-    }
-    @Override
+ /*       @Override
     public Pizza createPizza(String type) {
 
         if (type.equalsIgnoreCase("local")) {
@@ -46,6 +40,6 @@ public class BarcelonaRestaurant extends Restaurant {
             return null;
 
         return new Pizza(type, ingredients);
-    }
+    }*/
 
 }
