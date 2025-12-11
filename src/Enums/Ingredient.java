@@ -1,6 +1,8 @@
 package Enums;
 
 public enum Ingredient {
+    TOMATO_SAUCE,
+    CHEESE,
         HAM,
         PINEAPPLE,
         CHICKEN,
