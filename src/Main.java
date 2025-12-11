@@ -1,3 +1,4 @@
+import Enums.Ingredient;
 import Enums.Location;
 import Models.*;
 import Models.Restaurants.*;
@@ -104,12 +105,104 @@ public class Main {
 
             Product selectedProduct = products.get(choice - 1);
             System.out.println("You selected: " + selectedProduct.getName() + "\n");
+            if (selectedProduct instanceof Pizza) {
+                Pizza orderedPizza = new Pizza(selectedProduct.getName(), ((Pizza)selectedProduct).getIngredients());
+                Product orderedProduct = addExtraIngredients((Pizza)orderedPizza, scanner);
 
+            }
             return selectedProduct.getName();
 
 
 
         }
 
+  /*    // Ask for quantity
+        int quantity = getQuantity(scanner);
+
+        System.out.println("\nFinal order: " + selectedProduct.getName());
+        System.out.println("Quantity: " + quantity);
+        System.out.println("Price per unit: $" + String.format("%.2f", selectedProduct.getPrice()));
+        System.out.println("Total price: $" + String.format("%.2f", selectedProduct.getPrice() * quantity));
+
+        return selectedProduct; // new OrderItem(selectedProduct, quantity);
     }
+*/
+    private static Product addExtraIngredients(Product pizza, Scanner scanner) {
+        System.out.println("\nAvailable extra ingredients:");
+        Ingredient[] availableIngredients = Ingredient.values();
+
+        for (int i = 0; i < availableIngredients.length; i++) {
+            System.out.println((i + 1) + ". " + availableIngredients[i]);
+        }
+
+
+        System.out.print("\nDo you want to add extra ingredients? (yes/no): ");
+        String response = scanner.next().toLowerCase();
+
+        if (!response.equals("yes") && !response.equals("y")) {
+            return pizza;
+        }
+
+        Product decoratedPizza = pizza;
+        int extrasAdded = 0;
+
+        while (((Pizza)pizza).getIngredients().size() + extrasAdded < 10) {
+            System.out.print("\nChoose ingredient number (or 0 to finish): ");
+            if (scanner.hasNextInt()) {
+                int ingredientChoice = scanner.nextInt();
+
+                if (ingredientChoice == 0) {
+                    break;
+                }
+
+                if (ingredientChoice >= 1 && ingredientChoice <= availableIngredients.length) {
+                    decoratedPizza = new ExtraIngredient(decoratedPizza,availableIngredients[ingredientChoice-1]);
+                    extrasAdded++;
+                    System.out.println("Added: " + availableIngredients[ingredientChoice - 1]);
+                    int count = ((Pizza)pizza).getIngredients().size()+extrasAdded;
+                    System.out.println("Number of ingredients in pizza: " + count + "/10");
+                } else {
+                    System.out.println("Invalid choice.");
+                }
+            } else {
+                System.out.println("Invalid input.");
+                scanner.next();
+            }
+        }
+
+        if (extrasAdded == 10) {
+            System.out.println("Maximum number of extra ingredients reached.");
+        }
+        if (extrasAdded > 0) {
+            System.out.println("\nFinal Product: " + decoratedPizza.getName());
+            Pizza p = ((ExtraIngredient)decoratedPizza).getBasePizza();
+            ArrayList<Ingredient> ingredients = p.getIngredients();
+            System.out.println("Base Ingredients: " + ingredients);
+            System.out.println("Extras: " + ((ExtraIngredient)decoratedPizza).getAllExtraIngredients() );
+//            System.out.println("Price: $" + String.format("%.2f", decoratedPizza.getPrice()));
+        }
+
+        return decoratedPizza;
+    }
+    private static int getQuantity(Scanner scanner) {
+        int quantity = -1;
+
+        while (quantity < 1 || quantity > 10) {
+            System.out.print("\nEnter quantity (1-10): ");
+            if (scanner.hasNextInt()) {
+                quantity = scanner.nextInt();
+                if (quantity < 1 || quantity > 10) {
+                    System.out.println("Quantity must be between 1 and 10.");
+                }
+            } else {
+                System.out.println("Invalid input.");
+                scanner.next();
+            }
+        }
+
+        return quantity;
+    }
+    }
+
+
 
