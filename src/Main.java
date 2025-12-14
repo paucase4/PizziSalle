@@ -50,9 +50,10 @@ public class Main {
         ArrayList<Integer> quantities = new ArrayList<>();
 
         while (itemCount < 10) {
-            System.out.print("\nWhat product do you want? Enter number (if your order is complete type -1): ");
 
             Product p = orderManager.printAndSelectProducts(rest, c);
+            System.out.print("\nWhat product do you want? Enter number (if your order is complete type -1): ");
+
             if (p == null) {
                 break;
             }

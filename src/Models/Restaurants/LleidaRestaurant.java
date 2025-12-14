@@ -18,7 +18,11 @@ public class LleidaRestaurant extends Restaurant {
     @Override
     public void initializeLocalRecipes() {
         ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
-        ingredients.add(Ingredient.ARTICHOKE);
+        ingredients.add(Ingredient.BBQ_SAUCE);
+        ingredients.add(Ingredient.BEEF);
+        ingredients.add(Ingredient.CHICKEN);
+        ingredients.add(Ingredient.MUSHROOMS);
+        ingredients.add(Ingredient.OLIVES);
         this.localRecipes.put("Lleida", new Pizza("Lleida", ingredients));
     }
 }

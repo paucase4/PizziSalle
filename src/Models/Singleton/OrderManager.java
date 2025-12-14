@@ -36,7 +36,8 @@ public class OrderManager {
             return 0;
         });
         boolean bevs = false;
-        System.out.println("\n\n===== PIZZAS =====\n\n");
+        System.out.println("\n\n===== Welcome to PIZZISALLE "+ rest.getLocationRestaurant()+"=====\n");
+        System.out.println("===== PIZZAS =====\n");
         int i = 1;
         for (Product p: products) {
             if (p instanceof Beverage) {

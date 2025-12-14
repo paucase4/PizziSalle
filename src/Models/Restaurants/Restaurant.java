@@ -21,6 +21,10 @@ public abstract class Restaurant {
     protected abstract void initializeLocalRecipes();
     public Restaurant(Location loc){
         this.loc = loc;
+        initializeLocalRecipes();
+    }
+    public Location getLocationRestaurant(){
+        return loc;
     }
     public List<Product> getAvailableProducts() {
         Map<String, Product> all = new HashMap<>(COMMON_RECIPES);

@@ -19,7 +19,11 @@ public class TarragonaRestaurant extends Restaurant {
     @Override
     public void initializeLocalRecipes() {
         ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
-        ingredients.add(Ingredient.ARTICHOKE);
+        ingredients.add(Ingredient.TUNA);
+        ingredients.add(Ingredient.PRAWNS);
+        ingredients.add(Ingredient.ONION);
+        ingredients.add(Ingredient.HAM);
+        ingredients.add(Ingredient.OLIVES);
         this.localRecipes.put("tarragona", new Pizza("Tarragona", ingredients));
     }
 }
