@@ -1,4 +1,5 @@
 import Enums.Beverage;
+import Enums.Crust;
 import Enums.Ingredient;
 import Enums.Location;
 import Models.*;
@@ -196,19 +197,18 @@ public class Main {
 
             Product selectedProduct = products.get(choice - 1);
             System.out.println("You selected: " + selectedProduct.getName() + "\n");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        if (selectedProduct instanceof Pizza) {
-                Pizza orderedPizza = new Pizza(selectedProduct.getName(), ((Pizza)selectedProduct).getIngredients());
-                return addExtraIngredients((Pizza)orderedPizza, scanner);
-
-        }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            // Extra ingredients and Crust
+            if (selectedProduct instanceof Pizza) {
+                    Pizza orderedPizza = new Pizza(selectedProduct.getName(), ((Pizza)selectedProduct).getIngredients());
+                    orderedPizza.setCrustType(chooseCrust());
+                    return addExtraIngredients(orderedPizza, scanner);
+            }
             return selectedProduct;
-
-
 
         }
 
@@ -223,6 +223,31 @@ public class Main {
         return selectedProduct; // new OrderItem(selectedProduct, quantity);
     }
 */
+    private static Crust chooseCrust()  {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nSelect crust type:");
+        System.out.println("1. Original");
+        System.out.println("2. Thin");
+        System.out.println("3. Sicilian");
+
+        System.out.print("Enter your choice (1-3): ");
+
+        int crustChoice = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (crustChoice) {
+            case 1:
+                return Crust.ORIGINAL;
+            case 2:
+                return Crust.THIN;
+            case 3:
+                return Crust.SICILIAN;
+            default:
+                System.out.println("Invalid choice. Defaulting to Original.");
+                return Crust.ORIGINAL;
+        }
+
+    }
     private static Product addExtraIngredients(Product pizza, Scanner scanner) {
         System.out.println("\nAvailable extra ingredients:");
         Ingredient[] availableIngredients = Ingredient.values();
@@ -275,12 +300,12 @@ public class Main {
             ArrayList<Ingredient> ingredients = p.getIngredients();
             System.out.println("Base Ingredients: " + ingredients);
             System.out.println("Extras: " + ((ExtraIngredient)decoratedPizza).getAllExtraIngredients() );
+
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-//            System.out.println("Price: $" + String.format("%.2f", decoratedPizza.getPrice()));
         }
 
         return decoratedPizza;

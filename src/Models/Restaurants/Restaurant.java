@@ -13,7 +13,7 @@ import java.util.Map;
 
 public abstract class Restaurant {
     protected static final Map<String, Pizza> COMMON_RECIPES =
-            RecipesLoader.loadCommonRecipes("C:\\Users\\pauca\\OneDrive\\Escritorio\\test cesc\\untitled\\src\\Models\\ingredients.txt");
+            RecipesLoader.loadCommonRecipes("src/Models/ingredients.txt");
 
     protected Map<String, Pizza> localRecipes = new HashMap<>();
     Location loc;
