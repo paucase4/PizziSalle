@@ -15,7 +15,6 @@ import java.util.Scanner;
 public class PhoneOrderProcessor extends OrderProcessor {
 
     private Customer customer;
-    private Order order;
     private Restaurant restaurant;
 
     private final ArrayList<Product> orderedProducts = new ArrayList<>();
@@ -51,7 +50,7 @@ public class PhoneOrderProcessor extends OrderProcessor {
 
     @Override
     protected void createOrder() {
-        order = new Order();
+        Order order = new Order();
         order.setCustomer(customer);
         order.setLocation(getRandomLocation());
         restaurant = getRestaurant(order.getLocation());
