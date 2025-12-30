@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class PhoneOrderProcessor extends OrderProcessor {
-
+    // In a future the code could implement other order processors (web order processor, in person order processor...)
     private Customer customer;
     private Restaurant restaurant;
 
