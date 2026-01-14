@@ -2,7 +2,7 @@ package Models.Decorator;
 
 import Models.Pizza;
 import Models.Product;
-
+ // PATTERN: DECORATOR
  // Through this decorator we can implement other additions to the pizza
  // An example is the ExtraIngredient class. Thanks to the structural decorator pattern,
  // we can add as many extra ingredients as we wish to.

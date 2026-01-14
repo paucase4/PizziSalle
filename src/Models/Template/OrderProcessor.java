@@ -2,6 +2,7 @@ package Models.Template;
 
 public abstract class OrderProcessor {
     //PATTERN: Template
+
     public final void processOrder() {
         createCustomer();
         createOrder();

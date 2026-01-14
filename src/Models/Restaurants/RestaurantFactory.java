@@ -2,7 +2,7 @@ package Models.Restaurants;
 
 import Enums.Location;
 
-// FACTORY PATTERN (restaurants)
+// PATTERN: FACTORY PATTERN (restaurants)
 // Through this factory the creation of restaurants is centralized.
 // Whenever any restaurant is created is done through here, reducing code duplication.
 // To add a new king of restaurant we just add a class and add it in the switch.
