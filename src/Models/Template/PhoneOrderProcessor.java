@@ -13,7 +13,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class PhoneOrderProcessor extends OrderProcessor {
-    // In a future the code could implement other order processors (web order processor, in person order processor...)
+    // PATTERN: Template Method (Concrete Class)
+    // This class extends OrderProcessor and provides concrete
+    // implementations of the abstract steps defined in the template.
+    // It customizes how a customer is created, how products are selected,
+    // and how the order is printed for phone-based orders, while preserving
+    // the overall algorithm structure defined in the superclass.    
+    
     private Customer customer;
     private Restaurant restaurant;
 
