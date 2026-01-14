@@ -53,7 +53,7 @@ public class PhoneOrderProcessor extends OrderProcessor {
         Order order = new Order();
         order.setCustomer(customer);
         order.setLocation(getRandomLocation());
-        restaurant = getRestaurant(order.getLocation());
+        restaurant = RestaurantFactory.getRestaurant(order.getLocation());
     }
 
     @Override
@@ -101,16 +101,6 @@ public class PhoneOrderProcessor extends OrderProcessor {
         }
     }
 
-    // ---- helpers ----
-
-    private Restaurant getRestaurant(Location loc) {
-        return switch (loc) {
-            case BARCELONA -> new BarcelonaRestaurant();
-            case GIRONA -> new GironaRestaurant();
-            case LLEIDA -> new LleidaRestaurant();
-            case TARRAGONA -> new TarragonaRestaurant();
-        };
-    }
 
     private Location getRandomLocation() {
         return Location.values()[new Random().nextInt(Location.values().length)];

@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// FACTORY pattern
+// Through this abstract class
 public abstract class Restaurant {
     protected static final Map<String, Pizza> COMMON_RECIPES =
             RecipesLoader.loadCommonRecipes("src/Models/ingredients.txt");
@@ -34,6 +36,4 @@ public abstract class Restaurant {
         all.put("Soda", Beverage.COLA);
         return new ArrayList<>(all.values());
     }
-
-  //  public abstract Pizza createPizza (String name);
 }

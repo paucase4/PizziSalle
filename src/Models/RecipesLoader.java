@@ -21,11 +21,9 @@ public class RecipesLoader {
             while ((line = br.readLine()) != null) {
                 line = line.trim();
 
-                // Saltar línies buides o comentaris
                 if (line.isEmpty() || line.startsWith("#"))
                     continue;
 
-                // Format: Name: ING1, ING2, ING3
                 String[] parts = line.split(":");
                 String name = parts[0].trim();
 
