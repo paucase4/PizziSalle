@@ -13,7 +13,22 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class OrderManager {
-    //PATTERN: Singleton
+    // PATTERN: Singleton
+    // This class ensures that only one instance of OrderManager exists
+    // throughout the entire application. The constructor is private
+    // to prevent direct instantiation, and access to the single instance
+    // is provided through the static getInstance() method.
+    //
+    // The instance is created: it is only initialized the first
+    // time getInstance() is called. This guarantees a single shared
+    // OrderManager that coordinates order-related operations (such as
+    // product selection and customization) from a centralized point.
+    //
+    // By using the Singleton pattern, the application avoids inconsistent
+    // state and duplicated logic that could arise from having multiple
+    // order managers, ensuring controlled access and global consistency
+    // in order handling.
+
     private static OrderManager instance;
 
     private OrderManager() {}
