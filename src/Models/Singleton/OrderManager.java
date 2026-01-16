@@ -193,35 +193,4 @@ public class OrderManager {
 
         return decoratedPizza;
     }
-
-     /*    // Ask for quantity
-        int quantity = getQuantity(scanner);
-
-        System.out.println("\nFinal order: " + selectedProduct.getName());
-        System.out.println("Quantity: " + quantity);
-        System.out.println("Price per unit: $" + String.format("%.2f", selectedProduct.getPrice()));
-        System.out.println("Total price: $" + String.format("%.2f", selectedProduct.getPrice() * quantity));
-
-        return selectedProduct; // new OrderItem(selectedProduct, quantity);
-    }
-*/
-
-    private static int getQuantity(Scanner scanner) {
-        int quantity = -1;
-
-        while (quantity < 1 || quantity > 10) {
-            System.out.print("\nEnter quantity (1-10): ");
-            if (scanner.hasNextInt()) {
-                quantity = scanner.nextInt();
-                if (quantity < 1 || quantity > 10) {
-                    System.out.println("Quantity must be between 1 and 10.");
-                }
-            } else {
-                System.out.println("Invalid input.");
-                scanner.next();
-            }
-        }
-
-        return quantity;
-    }
 }
